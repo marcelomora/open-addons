@@ -1,0 +1,85 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="tycoon_game_tree_view">
+      <field name="name">tycoon.game.tree.view</field>
+      <field name="model">tycoon.game</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="date_start"/>
+          <field name="date_end"/>
+          <field name="manager_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="tycoon_game_view_form" model="ir.ui.view">
+        <field name="model">tycoon.game</field>
+        <field name="arch" type="xml">
+          <form string="Tycoon Game">
+            <header>
+              <button name="lets_play" string="Play" type="object" />
+              <button name="end_game" string="End Game" type="object" />
+              <field name="state" widget="statusbar"/>
+            </header>
+            <sheet>
+              <h1>
+                <field name="name"
+                  default_focus="1"
+                  placeholder="Name of the Game"
+                />
+              </h1>
+              <div class="o_row">
+                <field name="winner_id"/>
+              </div>
+              <group>
+                <field name="date_start"/>
+                <field name="date_end"/>
+              </group>
+              <group>
+                <field name="manager_id"/>
+                <field name="player_ids" widget="many2many_tags"/>
+              </group>
+            </sheet>
+          </form>
+        </field>
+    </record>       
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="tycoon_game_act_window">
+      <field name="name">Tycoon Games</field>
+      <field name="res_model">tycoon.game</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="/odoo12/odoo-dev/addons/open-addons/odoo-tycoon.action_server">
+      <field name="name">/odoo12/odoo-dev/addons/open-addons/odoo-tycoon server</field>
+      <field name="model_id" ref="model_/odoo12/odoo-dev/addons/open-addons/odoo-tycoon_/odoo12/odoo-dev/addons/open-addons/odoo-tycoon"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <menuitem name="Tycoon Game" id="tycoon_game_parent"/>
+    <!-- menu categories -->
+    <menuitem
+      name="Admin" id="tycoon_game_admin_menu"
+      parent="tycoon_game_parent"/>
+    <!-- actions -->
+    <menuitem
+      name="Game"
+      id="tycoon_game_admin"
+      parent="tycoon_game_admin_menu"
+      action="tycoon_game_act_window"/>
+  </data>
+</odoo>
