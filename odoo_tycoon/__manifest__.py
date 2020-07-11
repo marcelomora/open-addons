@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/tycoon_game_view.xml',
+        'views/game_move_views.xml',
         #  'views/templates.xml',
     ],
     # only loaded in demonstration mode

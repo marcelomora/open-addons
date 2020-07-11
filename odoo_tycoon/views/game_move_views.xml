@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="game_move_tree_view">
+      <field name="name">game.move.tree.view</field>
+      <field name="model">game.move</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="game_id"/>
+          <field name="player_id"/>
+        </tree>
+      </field>
+    </record>
+
+   <record id="game_move_view_form" model="ir.ui.view">
+       <field name="model">game.move</field>
+       <field name="arch" type="xml">
+           <form string="Game">
+             <header>
+               <button name="submit_move" string="Submit" type="object"></button>
+             </header>
+             <sheet>
+               <h1>
+                 <field name="game_id"/>
+               </h1>
+               <div class="o_row">
+                 <field name="player_id"/>
+               </div>
+               <group colspan="4">
+                 <field name="cash_total"/>
+                 <field name="cash_remaining"/>
+               </group>
+               <notebook colspan="4">
+                   <page string="Items">
+                     <field name="game_line_ids">
+                       <tree string="Game Purchases" editable="bottom">
+                         <field name="product_id"/>
+                         <field name="price_unit" readonly="1"/>
+                         <field name="qty"/>
+                         <field name="price_total"/>
+                       </tree>
+                     
+                     </field>
+                   </page>
+               </notebook>
+             </sheet>
+           </form>
+       </field>
+   </record>     
+   
+   <!-- actions opening views on models -->
+   <record model="ir.actions.act_window" id="tycoon_game_game_act_window">
+     <field name="name">Tycoon Game Move</field>
+     <field name="res_model">game.move</field>
+     <field name="view_mode">tree,form</field>
+   </record>
+
+   
+   <!-- menu categories -->
+   <menuitem
+     name="Game" id="tycoon_game_menu"
+     parent="tycoon_game_parent"/>
+    <!-- actions -->
+    <menuitem
+      name="Game"
+      id="tycoon_game_game_menu"
+      parent="tycoon_game_menu"
+      action="tycoon_game_game_act_window"/>
+
+</odoo>

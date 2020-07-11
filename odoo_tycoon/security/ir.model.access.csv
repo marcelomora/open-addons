@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 manager_tycoon_game,access_manager_tycoon_game,model_tycoon_game,base.group_user,1,1,1,1
+player_game_move,access_player_game_move,model_game_move,base.group_user,1,1,1,1
+player_access_game_move_line,access_player_game_move_line,model_game_move_line,base.group_user,1,1,1,1
