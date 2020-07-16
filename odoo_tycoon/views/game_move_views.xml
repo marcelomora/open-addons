@@ -36,7 +36,7 @@
                      <field name="game_line_ids">
                        <tree string="Game Purchases" editable="bottom">
                          <field name="product_id"/>
-                         <field name="price_unit" readonly="1"/>
+                         <field name="price_unit"/>
                          <field name="qty"/>
                          <field name="price_total"/>
                        </tree>

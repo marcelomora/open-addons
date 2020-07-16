@@ -53,6 +53,15 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="tycoon_product_act_window">
+      <field name="name">Products</field>
+      <field name="res_model">product.template</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+
     <!-- server action to the one above -->
     <!--
     <record model="ir.actions.server" id="/odoo12/odoo-dev/addons/open-addons/odoo-tycoon.action_server">
@@ -75,6 +84,10 @@
     <menuitem
       name="Admin" id="tycoon_game_admin_menu"
       parent="tycoon_game_parent"/>
+    <menuitem
+      name="Products" id="tycoon_game_product_menu"
+      parent="tycoon_game_admin_menu"
+      action="tycoon_product_act_window"/>
     <!-- actions -->
     <menuitem
       name="Game"

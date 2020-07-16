@@ -65,4 +65,5 @@ class GameMoveLine(models.Model):
     @api.depends('price_unit', 'qty')
     def _compute_totals(self):
         for r in self:
-            r.price_total = r.price_unit * r.qty
+            price_total = r.price_unit * r.qty
+            r.update({'price_total': price_total})
