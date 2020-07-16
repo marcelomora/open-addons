@@ -2,3 +2,4 @@
 
 from . import game
 from . import game_moves
+from . import product

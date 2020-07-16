@@ -52,7 +52,9 @@ class GameMoveLine(models.Model):
 
     product_id = fields.Many2one(
         'product.product',
-        'Product')
+        'Product',
+        domain=['&', ('is_tycoon', '=', True), ('type', '=', 'product')]
+    )
 
     price_unit = fields.Float("Price Unit")
     qty = fields.Float("Qty")
